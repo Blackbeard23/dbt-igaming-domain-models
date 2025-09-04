@@ -57,32 +57,10 @@ Key outcomes:
   - `risk/mrt_risk_monitoring` — users to review  
   - `growth/mrt_vip_segments` — VIP/HIGH/MEDIUM/LOW by cumulative GGR
 
-### Lineage (Mermaid sketch)
-```mermaid
-flowchart LR
-  subgraph Seeds
-    U[users.csv] B[bets.csv] D[deposits.csv] W[withdrawals.csv]
-    E[self_exclusions.csv] G[ip_geo.csv] O[bonuses.csv]
-  end
-  subgraph Staging
-    su[stg_users] sb[stg_bets] sd[stg_deposits] sw[stg_withdrawals]
-    se[stg_self_exclusions] sg[stg_ip_geo] so[stg_bonuses]
-  end
-  subgraph Intermediate
-    ex[int_exclusion_flags] --> be[int_bets_enriched] --> fb[fct_bet]
-    su --> rs[int_user_risk_scores]
-    sd --> rs; sw --> rs; fb --> rs
-  end
-  subgraph Marts
-    gd[fct_game_day] rm[mrt_risk_monitoring] vip[mrt_vip_segments]
-  end
+### Lineage Graph
+![dbt lineage graph for Skin Gaming project](dbt-dag.png)
 
-  U --> su; B --> sb --> ex; D --> sd; W --> sw; E --> se --> ex
-  G --> sg --> be; O --> so
-  be --> fb --> gd; rs --> rm; fb --> vip
-```
 
-> **dbt lineage graph:** run `dbt docs generate && dbt docs serve` to open the interactive lineage UI. Add a screenshot of the canvas to your README if you like.
 
 ---
 
