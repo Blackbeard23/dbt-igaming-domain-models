@@ -1,0 +1,25 @@
+name: 'skin_gaming_analytics_dbt'
+version: '1.0'
+config-version: 2
+
+profile: 'duckdb'
+
+model-paths: ['models']
+seed-paths: ['seeds']
+macro-paths: ['macros']
+
+models:
+  skin_gaming_analytics_dbt:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table
+
+seeds:
+  +quote_columns: false
+  +column_types:
+    bet_ts: timestamp
+    ts: timestamp
+    signup_date: date

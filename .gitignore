@@ -1,0 +1,44 @@
+# --- dbt artifacts ---
+target/
+logs/
+dbt_packages/
+dbt_modules/        # legacy
+
+# --- Local warehouse files (DuckDB, SQLite, etc.) ---
+warehouse.duckdb
+*.duckdb
+*.duckdb-wal
+*.db
+*.sqlite
+*.parquet
+
+# --- Python / venv / tooling ---
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+coverage.xml
+
+# --- Editors / OS cruft ---
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# --- Local outputs you might generate during analysis ---
+*.log
+*.tmp
+*.bak
+# Exports directory if you write CSVs for BI
+exports/
